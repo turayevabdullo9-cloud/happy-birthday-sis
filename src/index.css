@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-script: "Caveat", cursive;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #FAF6F0;
+    color: #3A2D28;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+}
+
+.paper-texture {
+  background-color: #FBF8F3;
+  background-image:
+    radial-gradient(at 20% 25%, rgba(234, 210, 206, 0.25) 0px, transparent 55%),
+    radial-gradient(at 80% 75%, rgba(201, 169, 110, 0.14) 0px, transparent 55%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(58, 45, 40, 0.015) 0px,
+      rgba(58, 45, 40, 0.015) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+}
+
+.linen-placeholder {
+  background-color: #F3ECE2;
+  background-image:
+    linear-gradient(135deg, rgba(201, 169, 110, 0.08) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(234, 210, 206, 0.12) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(201, 169, 110, 0.05) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(255, 255, 255, 0.35) 25%, #F3ECE2 25%);
+  background-position: 16px 0, 16px 0, 0 0, 0 0;
+  background-size: 32px 32px;
+}
+
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes candle-flicker {
+  0%, 100% {
+    transform: scaleY(1) scaleX(1) rotate(-1deg);
+    opacity: 0.95;
+  }
+  33% {
+    transform: scaleY(1.08) scaleX(0.94) rotate(1.5deg);
+    opacity: 1;
+  }
+  66% {
+    transform: scaleY(0.95) scaleX(1.04) rotate(-1.5deg);
+    opacity: 0.9;
+  }
+}
+
+.animate-candle-flame {
+  transform-origin: bottom center;
+  animation: candle-flicker 1.9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-candle-flame {
+    animation: none;
+  }
+}
